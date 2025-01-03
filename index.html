@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Hover Effect</title>
+    <style>
+        .card {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            margin: 50px auto;
+            overflow: hidden;
+        }
+
+        .wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .wrapper::before,
+        .wrapper::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('bg.jpeg') no-repeat center/cover;
+            transition: all 0.5s;
+        }
+
+        .wrapper::after {
+            opacity: 0;
+            height: 0;
+            background: url('fg.png') no-repeat center/cover;
+        }
+
+        .card:hover .wrapper::before,
+        .wrapper::after {
+            opacity: 1;
+        }
+
+        .card:hover .wrapper::after {
+            height: 120px;
+        }
+
+        .title {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            width: 100%;
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            transition: transform 0.5s;
+        }
+
+        .card:hover .title {
+            transform: translate3d(0%, -50px, 100px);
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="wrapper"></div>
+        <div class="title">Hover Me!</div>
+    </div>
+</body>
+</html>
